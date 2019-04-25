@@ -1,0 +1,23 @@
+Long linux commands from the book The Raspberry Pi Cookbook
+
+This is where you can find long commands used in the book and paste them into a terminal.
+
+- something thats a bit tricky with a paper book.
+
+Recipe XX
+Installing Simple CV
+$ sudo apt-get update
+$ sudo apt-get install ipython python-opencv python-scipy 
+$ sudo apt-get install python-numpy python-setuptools python-pip
+$ sudo pip install svgwrite
+
+$ sudo pip install https://github.com/sightmachine/SimpleCV/zipball/master --no-cache-dir
+$ pip install 'IPython==4' --force-reinstall
+
+
+
+
+Recipe XX
+Installing Tesseract
+$ sudo apt install tesseract-ocr
+$ sudo apt install libtesseract-dev
