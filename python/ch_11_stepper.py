@@ -1,19 +1,10 @@
-import RPi.GPIO as GPIO
+from gpiozero import Motor
 import time
- 
-GPIO.setmode(GPIO.BCM)
- 
-coil_A_1_pin = 18
-coil_A_2_pin = 23
-coil_B_1_pin = 24
-coil_B_2_pin = 17
- 
-GPIO.setup(coil_A_1_pin, GPIO.OUT)
-GPIO.setup(coil_A_2_pin, GPIO.OUT)
-GPIO.setup(coil_B_1_pin, GPIO.OUT)
-GPIO.setup(coil_B_2_pin, GPIO.OUT)
 
-forward_seq = ['1010', '0110', '0101', '1001']
+coil1 = Motor(forward=18, backward=23, pwm=False)
+coil2 = Motor(forward=24, backward=17, pwm=False)
+ 
+forward_seq = ['FF', 'BF', 'BB', 'FB']
 reverse_seq = list(forward_seq) # to copy the list
 reverse_seq.reverse()
  
@@ -29,18 +20,26 @@ def backwards(delay, steps):
       set_step(step)
       time.sleep(delay)
  
-  
 def set_step(step):
-  GPIO.output(coil_A_1_pin, step[0] == '1')
-  GPIO.output(coil_A_2_pin, step[1] == '1')
-  GPIO.output(coil_B_1_pin, step[2] == '1')
-  GPIO.output(coil_B_2_pin, step[3] == '1')
- 
+  if step == 'S':
+    coil1.stop()
+    coil2.stop()
+  else:
+    if step[0] == 'F':
+      coil1.forward()
+    else:
+      coil1.backward()
+    if step[1] == 'F':
+      coil2.forward()
+    else:
+      coil2.backward()
+
+
 while True:
-  set_step('0000')
-  delay = raw_input("Delay between steps (milliseconds)?")
-  steps = raw_input("How many steps forward? ")
+  set_step('S')
+  delay = input("Delay between steps (milliseconds)?")
+  steps = input("How many steps forward? ")
   forward(int(delay) / 1000.0, int(steps))
-  set_step('0000')
-  steps = raw_input("How many steps backwards? ")
+  set_step('S')
+  steps = input("How many steps backwards? ")
   backwards(int(delay) / 1000.0, int(steps))
