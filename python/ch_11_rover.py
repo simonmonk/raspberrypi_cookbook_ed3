@@ -45,19 +45,19 @@ try:
         keyp = readkey()
         if keyp == UP:
             rr.forward(1)
-            print 'forward'
+            print('forward')
         elif keyp == DOWN:
             rr.reverse(1)
-            print 'backward'
+            print('backward')
         elif keyp == RIGHT:
             rr.right(1)
-            print 'clockwise'
+            print('clockwise')
         elif keyp == LEFT:
             rr.left(1)
-            print 'anti clockwise'
+            print('anti clockwise')
         elif keyp == LEFT:
             rr.left(1)
-            print 'anti clockwise'   
+            print('anti clockwise')   
         elif ord(keyp) == 3:
             break
 
