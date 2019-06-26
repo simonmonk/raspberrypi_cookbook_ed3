@@ -1,6 +1,6 @@
 import pygame
 
-sound_file = '/home/pi/raspberrypi_cookbook_ed3/python/school_bell.mp3'
+sound_file = '/home/pi/raspberrypi_cookbook_ed3/python/school_bell.wav'
 
 pygame.mixer.init()
 pygame.mixer.music.load(sound_file)
