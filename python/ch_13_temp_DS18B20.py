@@ -23,5 +23,6 @@ def read_temp():
         return temp_c, temp_f
 
 while True:
-	print("temp C=%f\ttemp F=%f" % read_temp())
-	time.sleep(1)
+    temp_c, temp_f = read_temp()
+    print('Temp C={:.2f}\ttemp F={:.2f}'.format(temp_c, temp_f))
+    time.sleep(1)

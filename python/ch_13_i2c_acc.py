@@ -25,5 +25,6 @@ def read_acc():
     return (x, y, z)
 
 while True:
-    print("x=%f\ty=%f\tz=%f" % read_acc())
+    x, y, z = read_acc()
+    print("x={:.2f}\ty={:.2f}\tz={:.2f}".format(x, y, z))
     time.sleep(0.5)
