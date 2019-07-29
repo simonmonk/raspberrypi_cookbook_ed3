@@ -1,11 +1,12 @@
-import thread, time, random
+import threading, time, random
 
 def annoy(message):
     while True:
         time.sleep(random.randint(1, 3))
         print(message)
           
-thread.start_new_thread(annoy, ('BOO !!',))
+t = threading.Thread(target=annoy, args=('BOO !!',))
+t.start()
 
 x = 0
 while True:
