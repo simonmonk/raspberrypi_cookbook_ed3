@@ -1,5 +1,4 @@
 import cv2
-import numpy as np
 from imutils.video import VideoStream
 from imutils import resize
 
@@ -15,12 +14,11 @@ while True:
         cv2.HOUGH_GRADIENT, 1, 20, param1 = 50, 
         param2 = 30, minRadius = 15, maxRadius = 100)
 
-    detected_circles = np.uint16(np.around(detected_circles))
     print(detected_circles)
 
-    for pt in detected_circles[0, :]: 
+    for pt in detected_circles[0]: 
         a, b, r = pt[0], pt[1], pt[2] 
-        cv2.circle(img, (a, b), r, (0, 255, 0), 2) 
+        cv2.circle(img, (a, b), r, (0, 0, 0), 2) 
 
     cv2.imshow('image', img)
     key = cv2.waitKey(0)
